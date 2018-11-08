@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.seguros.model.Apolices;
 import br.com.seguros.predicate.CustomPredicate;
-import br.com.seguros.route.processor.QueryParametersProcessor;
 import br.com.seguros.route.processor.ResultSetProcessor;
 
 @Component
@@ -22,9 +21,6 @@ public class ApolicesRoute extends RouteBuilder{
 	@Qualifier("dataSource")
 	@Autowired
 	DataSource dataSource;
-	
-	@Autowired
-	QueryParametersProcessor queryParametersProcessor;
 	
 	@Autowired
 	ResultSetProcessor resultSetProcessor;
@@ -55,20 +51,6 @@ public class ApolicesRoute extends RouteBuilder{
 		 	.log("Erro do doTry doCatch")
 		 .end();
 			
-}
-		/*from("direct:apolice-route")
-			.process(queryParametersProcessor)			
-			.choice()
-				.when(header("cpfCnpjRequest").isNotNull())				
-					.setBody().simple("CALL db_apolices.proc_getApolices(${in.header.cpfCnpjRequest});")
-					.log("Setando e chamando a procedure => ${body}")
-					.to("jdbc:dataSource")
-					.process(resultSetProcessor)
-					.marshal().json(JsonLibrary.Jackson, Apolices.class)
-					.log("Logando o resultado da procedure => ${body}")					
-		    .otherwise()
-		    	.log("Deu erro ${headers}")
-		    .end();
-		*/
+	}
 }
 

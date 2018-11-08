@@ -10,6 +10,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Predicate;
 import org.apache.commons.lang3.BooleanUtils;
 
+import br.com.seguros.model.Apolices;
 import br.com.seguros.model.Campo;
 
 public class ValidaRequestPredicate implements Predicate {
@@ -34,7 +35,7 @@ public class ValidaRequestPredicate implements Predicate {
 		}
 
 		if (!campos.isEmpty()) {
-			exchange.getIn().setBody(campos, Map.class);
+			exchange.getIn().setBody(campos, Apolices.class);
 			exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, 400);
 			return false;
 		}
@@ -87,7 +88,7 @@ public class ValidaRequestPredicate implements Predicate {
 		List<String> companhias = new ArrayList<String>();
 		List<Campo> campos = new ArrayList<Campo>();
 
-		if (!request.containsKey("documento_vigente")) {
+		if (!request.containsKey("companhia")) {
 			return campos;
 		}
 
