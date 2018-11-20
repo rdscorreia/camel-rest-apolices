@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_EMPTY)
 @JsonPropertyOrder({ "id-apolice", "cpf-cnpj", "numero-documento", "descricao", "nome-segurado" })
-public class Apolice {
+public class ApoliceResponse {
 
 	@JsonProperty("id-apolice")
-	private Integer idApolice;
+	private String idApolice;
 
 	@JsonProperty("cpf-cnpj")
 	private String cpfCnpj;
@@ -26,11 +26,11 @@ public class Apolice {
 	@JsonProperty("nome-segurado")
 	private String nomeSegurado;
 
-	public Integer getIdApolice() {
+	public String getIdApolice() {
 		return idApolice;
 	}
 
-	public void setIdApolice(Integer idApolice) {
+	public void setIdApolice(String idApolice) {
 		this.idApolice = idApolice;
 	}
 

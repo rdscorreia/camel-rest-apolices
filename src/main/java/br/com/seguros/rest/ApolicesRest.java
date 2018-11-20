@@ -14,7 +14,7 @@ public class ApolicesRest extends RouteBuilder {
 	        .get()
 	        	.description("The list of all the apolices")
 	            .route().routeId("apolice-api")
-	            .log("Chamando rota Apolice-Route")
+	            .log("Chamando rota Rota_listar_Apolice_Route")
 	            .to("direct:apolice-route")
 	            .log("Terminando execução")	            
 	    .endRest();

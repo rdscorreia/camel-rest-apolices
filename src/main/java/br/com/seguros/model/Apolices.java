@@ -12,13 +12,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Apolices {
 
 	@JsonProperty("data")
-	private List<Apolice> apolices;
+	private List<ApoliceResponse> apolices;
 
-	public List<Apolice> getApolices() {
+	public List<ApoliceResponse> getApolices() {
 		return apolices;
 	}
 
-	public void setApolices(List<Apolice> apolices) {
+	public void setApolices(List<ApoliceResponse> apolices) {
 		this.apolices = apolices;
 	}
 

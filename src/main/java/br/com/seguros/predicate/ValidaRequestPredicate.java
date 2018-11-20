@@ -9,10 +9,12 @@ import java.util.Map;
 import org.apache.camel.Exchange;
 import org.apache.camel.Predicate;
 import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.stereotype.Component;
 
 import br.com.seguros.model.Apolices;
 import br.com.seguros.model.Campo;
 
+@Component
 public class ValidaRequestPredicate implements Predicate {
 
 	private static final String CAMPO_INFORMADO_CONTEM_VALOR_INVALIDO = "Campo informado contém valor inválido";
@@ -35,8 +37,8 @@ public class ValidaRequestPredicate implements Predicate {
 		}
 
 		if (!campos.isEmpty()) {
-			exchange.getIn().setBody(campos, Apolices.class);
-			exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, 400);
+			exchange.getOut().setBody(campos, Apolices.class);
+			exchange.getOut().setHeader(Exchange.HTTP_RESPONSE_CODE, 400);
 			return false;
 		}
 		return true;
@@ -120,7 +122,7 @@ public class ValidaRequestPredicate implements Predicate {
 		return !campo.isEmpty() || campo != null;
 	}
 
-	public boolean isCpfValido(final String cpf) {
+	private boolean isCpfValido(final String cpf) {
 
 		if (cpf == null) {
 			return false;
